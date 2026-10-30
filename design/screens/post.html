@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Blog — post</title>
+<link rel="stylesheet" href="blog.css">
+</head>
+<body>
+<div class="mock-title">dartvadius.github.io — post</div>
+
+<section class="state">
+  <h2>1 · Desktop, English: cover, figure, before/after pair, looping clip, note, app block</h2>
+  <div class="frame desktop" data-tpl="post"></div>
+</section>
+
+<section class="state">
+  <h2>2 · Phone (390 dp)</h2>
+  <div class="row"><div class="frame mobile" data-tpl="post"></div></div>
+</section>
+
+<section class="state">
+  <h2>3 · Post not translated into Ukrainian: the language is left out</h2>
+  <div class="row">
+    <div class="frame mobile" data-tpl="head" data-langs="A"></div>
+  </div>
+</section>
+
+<template id="head">
+<div class="site">
+  <header class="top">
+    <div class="shell top__in">
+      <a class="brand" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9.5"/><ellipse cx="12" cy="12" rx="4.2" ry="9.5"/><path d="M2.8 9h18.4M2.8 15h18.4"/>
+        </svg>
+        dartvadius
+      </a>
+      <span class="langs"><a class="on" href="#">EN</a><a data-l="uk" href="#">UK</a><a href="#">RU</a></span>
+    </div>
+  </header>
+</div>
+</template>
+
+<template id="post">
+<div class="site">
+  <header class="top">
+    <div class="shell top__in">
+      <a class="brand" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9.5"/><ellipse cx="12" cy="12" rx="4.2" ry="9.5"/><path d="M2.8 9h18.4M2.8 15h18.4"/>
+        </svg>
+        dartvadius
+      </a>
+      <span class="langs"><a class="on" href="#">EN</a><a href="#">UK</a><a href="#">RU</a></span>
+    </div>
+  </header>
+
+  <article>
+    <div class="post" style="padding-bottom:0">
+      <div class="crumbs"><a class="chip on" href="#">Cartography</a></div>
+      <h1>How the globe puts labels on a sphere</h1>
+      <p class="dek">A flat map can print a name once and forget it. On a globe the same name has to
+        bend with the surface, give way to its neighbours and stay readable while everything turns.</p>
+      <div class="byline">
+        <span class="meta">dartvadius · Oct 31, 2026 · 7 min read</span>
+      </div>
+    </div>
+
+    <div class="wide"><img src="img/political.webp" alt=""></div>
+
+    <div class="post prose">
+      <p>Terrella draws tens of thousands of names: countries, cities, rivers, ranges, seas. At any
+        moment only a small share of them fit. Which ones, where, and in what shape — that is most of
+        what makes a map look like a map rather than a scatter of words.</p>
+
+      <h2>Names that follow the land</h2>
+      <p>A river name is not placed at a point. It runs along the river, letter by letter, and each
+        letter is turned to match the bend under it. The same goes for mountain ranges and long seas.
+        <a href="#">Imhof's rules</a> for lettering were written for paper, and most of them hold on a sphere.</p>
+
+      <figure>
+        <img src="img/historical.webp" alt="">
+        <figcaption>Names of states set along their territory rather than at one point; the spacing
+          opens up as the state grows.</figcaption>
+      </figure>
+
+      <h2>Who wins a collision</h2>
+      <p>Two names that overlap cannot both stay. The rule is a ranking, not a timer: a capital beats a
+        town, a long river beats a short one, and a name that is already on screen keeps its place a
+        little longer so the map does not flicker as you pan.</p>
+
+      <figure>
+        <div class="pair">
+          <div><img src="img/political.webp" alt=""><div class="lbl">Before</div></div>
+          <div><img src="img/historical.webp" alt=""><div class="lbl">After</div></div>
+        </div>
+        <figcaption>The same view before and after the collision ranking.</figcaption>
+      </figure>
+
+      <figure class="clip">
+        <img src="img/stars.webp" alt="">
+        <figcaption>Turning the star globe: constellation names stay upright as the sky rotates.</figcaption>
+      </figure>
+
+      <div class="note"><b>Fonts:</b> physical names are set in Alegreya, cultural ones in Alegreya Sans —
+        both under the SIL Open Font License.</div>
+
+      <p>The full write-up of the rules, with the sources they come from, is in the project notes.
+        Next time: how the hypsometric colours were chosen.</p>
+
+      <div class="app cta">
+        <img src="img/terrella-icon.png" alt="">
+        <div><strong>Terrella</strong><span>3D globe of the Earth, its history and the sky. Free, with a Pro upgrade.</span></div>
+        <a class="btn" href="#">Get it on Google Play</a>
+      </div>
+
+      <nav class="pn">
+        <a href="#"><span class="meta">← Previous</span><strong>The star globe: reading the sky from the inside</strong></a>
+        <a href="#"><span class="meta">Next →</span><strong>Day 2 — Lines: eight thousand years of borders</strong></a>
+      </nav>
+    </div>
+  </article>
+
+  <footer class="foot">
+    <div class="shell">
+      <span>© 2026 dartvadius</span>
+      <a href="#">Terrella on Google Play</a><a href="#">RSS</a><a href="#">Mastodon</a>
+      <a class="sp" href="#">Terrella privacy policy</a>
+    </div>
+  </footer>
+</div>
+</template>
+
+<script>
+for (const f of document.querySelectorAll('[data-tpl]')) {
+  f.append(document.getElementById(f.dataset.tpl).content.cloneNode(true));
+  const uk = f.querySelector('[data-l="uk"]');
+  if (f.dataset.langs === 'A') uk.remove();
+}
+</script>
+</body>
+</html>

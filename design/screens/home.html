@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Blog — home</title>
+<link rel="stylesheet" href="blog.css">
+</head>
+<body>
+<div class="mock-title">dartvadius.github.io — home</div>
+
+<section class="state">
+  <h2>1 · Desktop, English, page 1: intro with a looping globe clip, then the post list</h2>
+  <div class="frame desktop" data-tpl="home" data-page="1"></div>
+</section>
+
+<section class="state">
+  <h2>2 · Desktop, page 2: no intro, the list continues</h2>
+  <div class="frame desktop" data-tpl="home" data-page="2"></div>
+</section>
+
+<section class="state">
+  <h2>3 · Tag page, reached from the tag above a post title</h2>
+  <div class="frame desktop" data-tpl="home" data-page="tag"></div>
+</section>
+
+<section class="state">
+  <h2>4 · Phone (390 dp), page 1</h2>
+  <div class="row"><div class="frame mobile" data-tpl="home" data-page="1"></div></div>
+</section>
+
+<template id="home">
+<div class="site">
+  <header class="top">
+    <div class="shell top__in">
+      <a class="brand" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9.5"/><ellipse cx="12" cy="12" rx="4.2" ry="9.5"/><path d="M2.8 9h18.4M2.8 15h18.4"/>
+        </svg>
+        dartvadius
+      </a>
+      <span class="langs"><a class="on" href="#">EN</a><a href="#">UK</a><a href="#">RU</a></span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="hero" data-only="1">
+      <div>
+        <h1>Notes from building a globe</h1>
+        <p>I make <a href="#">Terrella</a>, a 3D globe app. Here: how each screen works,
+          how the maps are made, and the data behind them.</p>
+      </div>
+      <img class="hero__clip" src="img/globe-poster.webp" alt="">
+    </div>
+
+    <div class="pagehead" data-only="2"><span class="meta">Page 2 of 3</span></div>
+    <div class="pagehead" data-only="tag">
+      <span class="meta">Tag</span>
+      <h1>Cartography</h1>
+    </div>
+
+    <div class="list">
+      <a class="item" href="#" data-p="1" data-tags="30dmc cartography">
+        <img src="img/historical.webp" alt="">
+        <div>
+          <div class="meta"><b>#30DayMapChallenge</b> · Nov 2, 2026</div>
+          <h3>Day 2 — Lines: eight thousand years of borders</h3>
+          <p>A short clip scrolling from 3000 BC to today, and where those lines come from.</p>
+        </div>
+      </a>
+      <a class="item" href="#" data-p="1" data-tags="cartography">
+        <img src="img/political.webp" alt="">
+        <div>
+          <div class="meta"><b>Cartography</b> · Oct 31, 2026</div>
+          <h3>How the globe puts labels on a sphere</h3>
+          <p>Curved names, which label wins a collision, and staying readable while the globe turns.</p>
+        </div>
+      </a>
+      <a class="item" href="#" data-p="1" data-tags="howto">
+        <img src="img/stars.webp" alt="">
+        <div>
+          <div class="meta"><b>How to</b> · Oct 29, 2026</div>
+          <h3>The star globe: reading the sky from the inside</h3>
+          <p>Constellations, their borders and figures, and the asterisms drawn underneath.</p>
+        </div>
+      </a>
+      <a class="item" href="#" data-p="1" data-tags="dev">
+        <img src="img/panorama.webp" alt="">
+        <div>
+          <div class="meta"><b>Development</b> · Oct 27, 2026</div>
+          <h3>Where Live Earth gets its data</h3>
+          <p>Public sources, one small server, and why the app never asks them directly.</p>
+        </div>
+      </a>
+      <a class="item" href="#" data-p="2" data-tags="howto cartography">
+        <img src="img/card.webp" alt="">
+        <div>
+          <div class="meta"><b>How to</b> · Oct 24, 2026</div>
+          <h3>The historical globe, year by year</h3>
+          <p>Scrubbing through time, what the dashed borders mean, and where coverage thins out.</p>
+        </div>
+      </a>
+      <a class="item" href="#" data-p="2" data-tags="cartography">
+        <img src="img/political.webp" alt="">
+        <div>
+          <div class="meta"><b>Cartography</b> · Oct 20, 2026</div>
+          <h3>Colouring a political map so neighbours never match</h3>
+          <p>Graph colouring on real borders, and the few countries that make it hard.</p>
+        </div>
+      </a>
+      <a class="item" href="#" data-p="2" data-tags="dev">
+        <img src="img/stars.webp" alt="">
+        <div>
+          <div class="meta"><b>Development</b> · Oct 16, 2026</div>
+          <h3>A globe in a fragment shader</h3>
+          <p>Why there is no 3D engine in the app, and what a sphere costs per frame.</p>
+        </div>
+      </a>
+    </div>
+
+    <nav class="pager">
+      <a class="pg" data-pg="prev" href="#">← Newer</a>
+      <a class="pg" data-n="1" href="#">1</a><a class="pg" data-n="2" href="#">2</a><a class="pg" data-n="3" href="#">3</a>
+      <a class="pg" data-pg="next" href="#">Older →</a>
+    </nav>
+  </main>
+
+  <footer class="foot">
+    <div class="shell">
+      <span>© 2026 dartvadius</span>
+      <a href="#">Terrella on Google Play</a><a href="#">RSS</a><a href="#">Mastodon</a>
+      <a class="sp" href="#">Terrella privacy policy</a>
+    </div>
+  </footer>
+</div>
+</template>
+
+<script>
+for (const f of document.querySelectorAll('[data-tpl]')) {
+  f.append(document.getElementById(f.dataset.tpl).content.cloneNode(true));
+  const page = f.dataset.page;
+  for (const el of f.querySelectorAll('[data-only]')) if (el.dataset.only !== page) el.remove();
+  for (const el of f.querySelectorAll('.item')) {
+    const keep = page === 'tag' ? el.dataset.tags.split(' ').includes('cartography') : el.dataset.p === page;
+    if (!keep) el.remove();
+  }
+  const pager = f.querySelector('.pager');
+  if (page === 'tag') { pager.remove(); continue; }
+  pager.querySelector(`[data-n="${page}"]`).classList.add('on');
+  if (page === '1') pager.querySelector('[data-pg="prev"]').classList.add('dead');
+}
+</script>
+</body>
+</html>

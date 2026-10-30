@@ -1,0 +1,8 @@
+# dartvadius
+
+> Notes on Terrella, an interactive 3D globe app, on cartography, programming and AI.
+
+## Pages
+- https://dartvadius.github.io/
+- https://dartvadius.github.io/uk/
+- https://dartvadius.github.io/ru/

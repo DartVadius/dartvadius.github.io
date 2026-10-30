@@ -1,0 +1,144 @@
+{
+  "_comment": "Everything specific to this site. build.py and templates/ hold no names, URLs or UI strings.",
+  "site": "https://dartvadius.github.io",
+  "site_name": "dartvadius",
+  "author": "dartvadius",
+  "mastodon": "https://mastodon.social/@DartVadius",
+  "root_lang": "en",
+  "langs": [
+    "en",
+    "uk",
+    "ru"
+  ],
+  "app": {
+    "name": "Terrella",
+    "install_url": "https://play.google.com/store/apps/details?id=com.globus.globus",
+    "referrer_post": "utm_source%3Ddartvadius.github.io%26utm_medium%3Dpost",
+    "referrer_home": "utm_source%3Ddartvadius.github.io%26utm_medium%3Dhome",
+    "referrer_footer": "utm_source%3Ddartvadius.github.io%26utm_medium%3Dfooter",
+    "icon": "/assets/img/terrella-icon.png",
+    "privacy_url": "https://dartvadius.github.io/terrella-privacy/"
+  },
+  "tags": {
+    "howto": {
+      "en": "How to",
+      "uk": "Як користуватися",
+      "ru": "Как пользоваться"
+    },
+    "cartography": {
+      "en": "Cartography",
+      "uk": "Картографія",
+      "ru": "Картография"
+    },
+    "30dmc": {
+      "en": "#30DayMapChallenge",
+      "uk": "#30DayMapChallenge",
+      "ru": "#30DayMapChallenge"
+    },
+    "dev": {
+      "en": "Development",
+      "uk": "Розробка",
+      "ru": "Разработка"
+    },
+    "ai": {
+      "en": "AI",
+      "uk": "ШІ",
+      "ru": "ИИ"
+    }
+  },
+  "ui": {
+    "en": {
+      "home_title": "dartvadius — a diary about globes, cartography, programming and AI",
+      "home_desc": "Notes on Terrella, an interactive 3D globe app, on cartography, programming and AI.",
+      "language": "Language",
+      "page_of": "Page {n} of {total}",
+      "newer": "← Newer",
+      "older": "Older →",
+      "previous": "← Previous",
+      "next": "Next →",
+      "min_read": "{n} min read",
+      "tag": "Tag",
+      "app_line": "3D globe of the Earth, its history and the sky. Free, with a Pro upgrade.",
+      "app_btn": "Get it on Google Play",
+      "foot_app": "Terrella on Google Play",
+      "privacy": "Terrella privacy policy",
+      "months": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "date": "{M} {d}, {y}"
+    },
+    "uk": {
+      "home_title": "dartvadius — щоденник про глобуси, картографію, програмування та ШІ",
+      "home_desc": "Нотатки про Terrella — застосунок з інтерактивним 3D-глобусом, про картографію, програмування та ШІ.",
+      "language": "Мова",
+      "page_of": "Сторінка {n} з {total}",
+      "newer": "← Новіші",
+      "older": "Старіші →",
+      "previous": "← Попередній",
+      "next": "Наступний →",
+      "min_read": "{n} хв читання",
+      "tag": "Тег",
+      "app_line": "3D-глобус Землі, її історії та неба. Безкоштовно, з оновленням до Pro.",
+      "app_btn": "Завантажити з Google Play",
+      "foot_app": "Terrella у Google Play",
+      "privacy": "Політика конфіденційності Terrella",
+      "months": [
+        "січня",
+        "лютого",
+        "березня",
+        "квітня",
+        "травня",
+        "червня",
+        "липня",
+        "серпня",
+        "вересня",
+        "жовтня",
+        "листопада",
+        "грудня"
+      ],
+      "date": "{d} {M} {y}"
+    },
+    "ru": {
+      "home_title": "dartvadius — дневник о глобусах, картографии, программировании и ИИ",
+      "home_desc": "Заметки о Terrella — приложении с интерактивным 3D-глобусом, о картографии, программировании и ИИ.",
+      "language": "Язык",
+      "page_of": "Страница {n} из {total}",
+      "newer": "← Новее",
+      "older": "Старше →",
+      "previous": "← Предыдущий",
+      "next": "Следующий →",
+      "min_read": "{n} мин чтения",
+      "tag": "Тег",
+      "app_line": "3D-глобус Земли, её истории и неба. Бесплатно, с обновлением до Pro.",
+      "app_btn": "Скачать в Google Play",
+      "foot_app": "Terrella в Google Play",
+      "privacy": "Политика конфиденциальности Terrella",
+      "months": [
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря"
+      ],
+      "date": "{d} {M} {y}"
+    }
+  }
+}

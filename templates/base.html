@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="{{LANG}}" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="canonical" href="{{CANONICAL}}">
+{{HREFLANG}}
+<meta name="theme-color" content="#0d1116">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="{{OG_TYPE}}">
+<meta property="og:site_name" content="{{SITE_NAME}}">
+<meta property="og:url" content="{{CANONICAL}}">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:locale" content="{{OG_LOCALE}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/AlegreyaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/Alegreya-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="me" href="{{MASTODON}}">
+<script type="application/ld+json">{{JSONLD}}</script>
+</head>
+<body>
+<div class="site">
+  <header class="top">
+    <div class="shell top__in">
+      <a class="brand" href="{{HOME}}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9.5"/><ellipse cx="12" cy="12" rx="4.2" ry="9.5"/><path d="M2.8 9h18.4M2.8 15h18.4"/>
+        </svg>
+        {{SITE_NAME}}
+      </a>
+      <nav class="langs" aria-label="{{L_LANGUAGE}}">{{LANGSWITCH}}</nav>
+    </div>
+  </header>
+
+  <main>
+{{BODY}}
+  </main>
+
+  <footer class="foot">
+    <div class="shell">
+      <span>© {{YEAR}} {{SITE_NAME}}</span>
+      <a href="{{FOOT_APP_URL}}">{{L_FOOT_APP}}</a><a href="{{MASTODON}}" rel="me">Mastodon</a>
+      <a class="sp" href="{{PRIVACY_URL}}">{{L_PRIVACY}}</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
