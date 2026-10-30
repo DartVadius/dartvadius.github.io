@@ -81,7 +81,34 @@ def read_fragment(path):
             raise SystemExit("%s: header line without a colon: %r" % (path, line))
         key, value = line.split(":", 1)
         meta[key.strip()] = value.strip()
-    return meta, body.strip()
+    body = body.strip()
+    if path.endswith(".md"):
+        body = markdown_to_html(body, path)
+    return meta, body
+
+
+def markdown_to_html(text, where):
+    """A `.md` post body → HTML, through python-markdown, never a parser of our
+    own: platizhka-site keeps HTML fragments because a hand-rolled Markdown
+    parser is a source of silent formatting bugs, and that reason stands.
+
+    Markdown exists here for an admin UI (Sveltia CMS, if it is ever added)
+    and for quick posts; HTML posts stay HTML. Raw HTML passes through, and
+    `md_in_html` lets a `<figure markdown>` hold Markdown inside it.
+
+    ⚠ No `smarty`: it turns "…" into English curly quotes, which is wrong in
+    Ukrainian and Russian («…»). Typographic characters are typed as such.
+
+    Imported lazily so a site with only HTML posts builds on the bare standard
+    library, as it always has.
+    """
+    try:
+        import markdown
+    except ImportError:
+        raise SystemExit("%s: a .md post needs python-markdown — pip3 install --user markdown"
+                         % where)
+    return markdown.markdown(text, extensions=["extra", "sane_lists"],
+                             output_format="html")
 
 
 def stamp_date(value, where, allow_future=False):
@@ -164,6 +191,8 @@ def render(template, lang, rel_by_lang, title, description, body, jsonld,
         "PRIVACY_URL": APP["privacy_url"],
         "L_PRIVACY": esc(t["privacy"]),
         "YEAR": str(date.today().year),
+        "FEED": feed_path(lang),
+        "L_FEED_TITLE": esc(t["home_title"]),
     }
     page = template
     for key, value in subs.items():
@@ -207,6 +236,57 @@ def pager_html(lang, idx, total):
     return '<nav class="pager">%s</nav>' % "".join(bits)
 
 
+FEED_SIZE = 20
+
+
+def absolutize(fragment):
+    """Root-relative src/href → absolute. A feed reader has no base URL, so
+    `/assets/img/x.webp` inside an item would point at the reader's own host."""
+    return re.sub(r'(\s(?:src|href|poster)=")/(?!/)', r'\1%s/' % SITE, fragment)
+
+
+def rss(lang, items):
+    """RSS 2.0 for one language, newest FEED_SIZE posts, full text.
+
+    Full text rather than a summary on purpose: the readers this blog wants —
+    Mastodon people, map blogs like The Map Room — read in feed readers, and a
+    teaser that forces a click is the reason people unsubscribe.
+    """
+    from email.utils import format_datetime
+    from datetime import datetime, timezone
+    t = UI[lang]
+    entries = []
+    for slug, meta, body in items[:FEED_SIZE]:
+        link = SITE + url_for(lang, slug)
+        when = datetime(meta["_date"].year, meta["_date"].month, meta["_date"].day,
+                        tzinfo=timezone.utc)
+        cover = ('<p><img src="%s%s" alt=""></p>' % (SITE, esc(meta["cover"]))
+                 if meta.get("cover") else "")
+        content = cover + absolutize(body)
+        entries.append(
+            "<item><title>%s</title><link>%s</link><guid isPermaLink=\"true\">%s</guid>"
+            "<pubDate>%s</pubDate>%s<description>%s</description>"
+            "<content:encoded><![CDATA[%s]]></content:encoded></item>"
+            % (esc(meta["title"]), link, link, format_datetime(when),
+               "".join("<category>%s</category>" % esc(tag_label(tg, lang))
+                       for tg in meta["_tags"]),
+               esc(meta["description"]), content.replace("]]>", "]]]]><![CDATA[>")))
+    feed_url = SITE + feed_path(lang)
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" '
+            'xmlns:atom="http://www.w3.org/2005/Atom"><channel>'
+            '<title>%s</title><link>%s</link><description>%s</description>'
+            '<language>%s</language>'
+            '<atom:link href="%s" rel="self" type="application/rss+xml"/>%s'
+            '</channel></rss>\n'
+            % (esc(t["home_title"]), SITE + url_for(lang, ""), esc(t["home_desc"]),
+               lang, feed_url, "".join(entries)))
+
+
+def feed_path(lang):
+    return PREFIX[lang] + "/feed.xml"
+
+
 def main():
     drafts = "--drafts" in sys.argv[1:]
     with open(os.path.join(ROOT, "templates", "base.html"), encoding="utf-8") as fh:
@@ -219,9 +299,12 @@ def main():
         if not os.path.isdir(d):
             continue
         for name in sorted(os.listdir(d)):
-            if not name.endswith(".html"):
+            slug, ext = os.path.splitext(name)
+            if ext not in (".html", ".md"):
                 continue
-            slug, where = name[:-5], "%s/posts/%s" % (lang, name)
+            where = "%s/posts/%s" % (lang, name)
+            if slug in posts and lang in posts[slug]:
+                raise SystemExit("%s: the same slug exists as both .html and .md" % where)
             if slug in RESERVED or not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", slug):
                 raise SystemExit("%s: slug must be lowercase-hyphenated and not one of %s"
                                  % (where, sorted(RESERVED)))
@@ -366,6 +449,11 @@ def main():
                   render(template, lang, avail, meta["title"], meta["description"], page_body,
                          jsonld, og_type="article", og_image=meta.get("cover")),
                   stamp)
+
+    # ── feeds ────────────────────────────────────────────────────────────
+    for lang in LANGS:
+        with open(os.path.join(OUT, feed_path(lang).lstrip("/")), "w", encoding="utf-8") as fh:
+            fh.write(rss(lang, by_lang[lang]))
 
     # ── static assets, sitemap, robots, llms ─────────────────────────────
     shutil.copytree(os.path.join(ROOT, "static"), os.path.join(OUT, "assets"))

@@ -20,6 +20,12 @@ home page is the post list. The design source of truth is the mock in
 `design/screens/` (`home.html`, `post.html`); `static/site.css` was lifted from
 its `blog.css`.
 
+## Feeds
+
+`/feed.xml`, `/uk/feed.xml`, `/ru/feed.xml` — RSS 2.0, the newest 20 posts of
+that language with their full text and absolute image URLs. Linked from every
+page's `<head>` and footer.
+
 ## URLs — decided once
 
 Pages cannot redirect, so a URL that ships is kept.
@@ -58,6 +64,13 @@ Body blocks the stylesheet knows: `<h2>`, `<p>`, `<figure>` + `<figcaption>`,
 `<div class="note">`. A looping clip is
 `<video autoplay muted loop playsinline preload="none" poster="…">` with an
 MP4 of a few MB at most; anything long goes to YouTube (nocookie).
+
+A post may also be `content/<lang>/posts/<slug>.md` — the same header, then a
+Markdown body (python-markdown with `extra`: tables, footnotes, attributes, raw
+HTML). It needs `pip3 install --user markdown`; a site with only `.html` posts
+builds on the bare standard library. In a `.md` post write figures, pairs and
+notes as plain HTML blocks — Markdown is not processed inside them. Quotes and
+dashes are not auto-converted: type «», — and ’ yourself.
 
 Images for a post go to `static/img/posts/<slug>/` and are served from
 `/assets/img/posts/<slug>/`.

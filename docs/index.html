@@ -24,6 +24,7 @@
 <link rel="preload" href="/assets/fonts/AlegreyaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Alegreya-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" type="application/rss+xml" title="dartvadius — a diary about globes, cartography, programming and AI" href="/feed.xml">
 <link rel="me" href="https://mastodon.social/@DartVadius">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"dartvadius — a diary about globes, cartography, programming and AI","url":"https://dartvadius.github.io/","inLanguage":"en","author":{"@type":"Person","name":"dartvadius"},"blogPost":[]}</script>
 </head>
@@ -49,17 +50,29 @@
       my apps is <a href="https://play.google.com/store/apps/details?id=com.globus.globus&referrer=utm_source%3Ddartvadius.github.io%26utm_medium%3Dhome">Terrella</a>, an interactive 3D globe. Here I plan to
       post about Terrella and about development in general, and we'll see how it goes.</p>
   </div>
-  <img class="hero__clip" src="/assets/img/globe-poster.webp" alt="" width="440" height="440">
+  <video class="hero__clip" data-autoplay muted loop playsinline preload="metadata"
+    poster="/assets/img/globe-poster.webp" width="520" height="520">
+    <source src="/assets/img/globe-spin.mp4" type="video/mp4">
+  </video>
 </div><div class="list"></div></div>
   </main>
 
   <footer class="foot">
     <div class="shell">
       <span>© 2026 dartvadius</span>
-      <a href="https://play.google.com/store/apps/details?id=com.globus.globus&referrer=utm_source%3Ddartvadius.github.io%26utm_medium%3Dfooter">Terrella on Google Play</a><a href="https://mastodon.social/@DartVadius" rel="me">Mastodon</a>
+      <a href="https://play.google.com/store/apps/details?id=com.globus.globus&referrer=utm_source%3Ddartvadius.github.io%26utm_medium%3Dfooter">Terrella on Google Play</a><a href="/feed.xml">RSS</a><a href="https://mastodon.social/@DartVadius" rel="me">Mastodon</a>
       <a class="sp" href="https://dartvadius.github.io/terrella-privacy/">Terrella privacy policy</a>
     </div>
   </footer>
 </div>
+<script>
+/* Looping clips start only when the reader has not asked for less motion;
+   otherwise — and without JS — the poster stays. */
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  for (const v of document.querySelectorAll('video[data-autoplay]')) {
+    v.autoplay = true; v.play().catch(() => {});
+  }
+}
+</script>
 </body>
 </html>

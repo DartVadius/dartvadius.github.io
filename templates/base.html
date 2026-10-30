@@ -21,6 +21,7 @@
 <link rel="preload" href="/assets/fonts/AlegreyaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Alegreya-Bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
+<link rel="alternate" type="application/rss+xml" title="{{L_FEED_TITLE}}" href="{{FEED}}">
 <link rel="me" href="{{MASTODON}}">
 <script type="application/ld+json">{{JSONLD}}</script>
 </head>
@@ -45,10 +46,19 @@
   <footer class="foot">
     <div class="shell">
       <span>© {{YEAR}} {{SITE_NAME}}</span>
-      <a href="{{FOOT_APP_URL}}">{{L_FOOT_APP}}</a><a href="{{MASTODON}}" rel="me">Mastodon</a>
+      <a href="{{FOOT_APP_URL}}">{{L_FOOT_APP}}</a><a href="{{FEED}}">RSS</a><a href="{{MASTODON}}" rel="me">Mastodon</a>
       <a class="sp" href="{{PRIVACY_URL}}">{{L_PRIVACY}}</a>
     </div>
   </footer>
 </div>
+<script>
+/* Looping clips start only when the reader has not asked for less motion;
+   otherwise — and without JS — the poster stays. */
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  for (const v of document.querySelectorAll('video[data-autoplay]')) {
+    v.autoplay = true; v.play().catch(() => {});
+  }
+}
+</script>
 </body>
 </html>
