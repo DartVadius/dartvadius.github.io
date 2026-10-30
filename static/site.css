@@ -39,7 +39,9 @@ body { margin: 0; background: var(--bg); }
 .brand { display: flex; align-items: center; gap: 10px; font: 700 21px/1 Alegreya, serif;
   color: var(--ink-strong); letter-spacing: .01em; }
 .brand svg { width: 26px; height: 26px; color: var(--brass); }
-.langs { margin-left: auto; display: flex; gap: 2px; font: 500 13px/1 AlegreyaSans, sans-serif; letter-spacing: .06em; }
+.nav-home { margin-left: auto; font: 500 15px/1 AlegreyaSans, sans-serif; color: var(--ink-muted); }
+.nav-home:hover { color: var(--ink-strong); }
+.langs { display: flex; gap: 2px; font: 500 13px/1 AlegreyaSans, sans-serif; letter-spacing: .06em; }
 .langs a, .langs span { padding: 6px 7px; border-radius: 4px; color: var(--ink-dim); }
 .langs .on { color: var(--bg); background: var(--ink-muted); }
 
@@ -114,7 +116,7 @@ figcaption { font-size: 15px; color: var(--ink-dim); margin-top: 9px; line-heigh
   .site { font-size: 17px; }
   .shell { padding: 0 18px; }
   .top__in { height: 56px; gap: 12px; }
-  .langs { margin-left: auto; }
+  .nav-home { font-size: 14px; }
   .item { grid-template-columns: 1fr 104px; gap: 14px; padding: 18px 0; }
   .item img { order: 2; aspect-ratio: 1; }
   .item h3 { font-size: 20px; }
