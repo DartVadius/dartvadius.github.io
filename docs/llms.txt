@@ -6,3 +6,12 @@
 - https://dartvadius.github.io/
 - https://dartvadius.github.io/uk/
 - https://dartvadius.github.io/ru/
+- https://dartvadius.github.io/tag/dev/
+- https://dartvadius.github.io/uk/tag/dev/
+- https://dartvadius.github.io/ru/tag/dev/
+- https://dartvadius.github.io/tag/ai/
+- https://dartvadius.github.io/uk/tag/ai/
+- https://dartvadius.github.io/ru/tag/ai/
+- https://dartvadius.github.io/how-i-didnt-buy-a-globe/
+- https://dartvadius.github.io/uk/how-i-didnt-buy-a-globe/
+- https://dartvadius.github.io/ru/how-i-didnt-buy-a-globe/

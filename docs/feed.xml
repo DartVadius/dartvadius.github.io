@@ -1,2 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>dartvadius — a diary about globes, cartography, programming and AI</title><link>https://dartvadius.github.io/</link><description>Notes on Terrella, an interactive 3D globe app, on cartography, programming and AI.</description><language>en</language><atom:link href="https://dartvadius.github.io/feed.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>dartvadius — a diary about globes, cartography, programming and AI</title><link>https://dartvadius.github.io/</link><description>Notes on Terrella, an interactive 3D globe app, on cartography, programming and AI.</description><language>en</language><atom:link href="https://dartvadius.github.io/feed.xml" rel="self" type="application/rss+xml"/><item><title>How I didn&#x27;t buy a globe and made my own</title><link>https://dartvadius.github.io/how-i-didnt-buy-a-globe/</link><guid isPermaLink="true">https://dartvadius.github.io/how-i-didnt-buy-a-globe/</guid><pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate><category>Development</category><category>AI</category><description>I&#x27;ve always loved globes and maps. One day I decided to scratch an old itch and buy a globe for my home — and nothing went to plan.</description><content:encoded><![CDATA[<p><img src="https://dartvadius.github.io/assets/img/posts/how-i-didnt-buy-a-globe/cover.webp" alt=""></p><h2>The inner killjoy</h2>
+<p>I started browsing online shops, and that's when my inner killjoy woke up. There's no room for a globe in the flat. It'll stand in a corner gathering dust. And anyway, things tie you to a place, and a programmer is a proud and free bird.</p>
+<p>He was hard to argue with. Then it hit me: I'm a programmer. Why not make a globe with my own hands — one I could slip into my pocket and carry everywhere?</p>
+<p>To be fair, I did go to Google Play first to look for a ready-made one. There are plenty of globes there, but none quite like the one I had in mind. I wanted a globe that felt like a real desk globe: colourful countries, neat lettering, and the sense that you're turning an object in your hands rather than looking at a satellite photo. So I'd build it myself.</p>
+
+<h2>A good plan, as reliable as a Swiss watch</h2>
+<p>I've done commercial development, and I had a rough idea of how much time and effort goes into a more or less serious app — especially with a single developer. So I made a firm decision right away: I'd build it together with AI. Design, architecture and oversight are on me; code, discussion and critique are on Claude. I'd worked with AI before, too.</p>
+<p>Next came the choice of technology. Terrella was meant to be cross-platform from day one (why think small?). I'd worked with React Native and knew for sure I didn't want that pain and suffering again. That left Dart and Flutter. I knew them only superficially, but since the coding was delegated to AI, that didn't stop me.</p>
+
+<h2>Day one: one ball, no engine</h2>
+<p>The first prototype appeared in July 2026. 3D on a phone is usually built on a game engine, but for a globe that's using a sledgehammer to crack a nut — it's plain overkill for a mere textured ball. So the ball is drawn by the graphics card. One fragment shader, an orthographic projection of an equirectangular texture, rotation and zoom passed in as parameters. In other words, we take an ordinary flat world map and wrap it around a ball.</p>
+<p>That same day the prototype was already spinning on my phone. From that moment on, it was clear the idea could work.</p>
+
+<h2>The first month: views and worlds</h2>
+<p>From there the idea snowballed. Besides the political map — the main view, where it all started — I added relief with mountains, plains, seas and oceans, hydrography with vector rivers, and the Solar System: planets, moons and their surfaces, put together from NASA imagery. Several languages came along on the way.</p>
+<p>Then came the historical globe: a view with a time slider that redraws the borders of states from 6000 BC to the present day. I love history too, so why not? Once you start coming up with ideas, it's hard to stop.</p>
+
+<h2>August: how about a pinch of interactivity?</h2>
+<p>At first the globe was meant to be fully offline, but along the way I realised it would be nice not just to look at the globe but to get something interesting and useful out of it. So Wikipedia was called up. The globe learned to tell you about what's drawn on it. Tap a country, a city, a river or a mountain, and a card opens with facts, a Wikipedia article and photos. Search came next, and after it voice input for the lazy.</p>
+
+<h2>September: a quiz, the stars and testing</h2>
+<p>The ideas kept pouring out. A geography and history quiz appeared. Then a globe of the night sky: 88 constellations with their borders and figures, asterisms and thousands of stars — and all of it, of course, interactive too.</p>
+<p>Meanwhile there was constant bug fixing, most of it down to errors in the datasets. My faithful Claude kindly kept me posted on them. Some of the findings flew off as issues to the people behind the data.</p>
+
+<h2>October: time to release</h2>
+<p>On 12 October Terrella went live on Google Play. Then the updates rolled in:</p>
+<ul>
+  <li>a live wallpaper: the globe turns right on your phone's home screen;</li>
+  <li>a travel journal: mark where you've been, and those countries get hatched on the globe;</li>
+  <li>a "where am I" button.</li>
+</ul>
+
+<h2>In sum</h2>
+<p>It took just under three months to get from prototype to release. Claude does an excellent job as long as you stick to a set of rules — I may write about them later. Looking at the amount of work done, I'm soberly aware that writing it all by hand would have taken me anywhere from a year to forever. So feel free to treat this post as covert advertising for AI.</p>]]></content:encoded></item></channel></rss>

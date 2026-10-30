@@ -88,6 +88,9 @@ body { margin: 0; background: var(--bg); }
 .prose p { margin: 0 0 18px; }
 .prose a { color: var(--brass); border-bottom: 1px solid var(--brass-line); }
 .prose em { font-style: italic; }
+.prose ul, .prose ol { margin: 0 0 18px; padding-left: 1.3em; }
+.prose li { margin: 0 0 6px; }
+.prose li::marker { color: var(--brass); }
 figure { margin: 28px 0; }
 figure img { width: 100%; border-radius: 6px; display: block; }
 figcaption { font-size: 15px; color: var(--ink-dim); margin-top: 9px; line-height: 1.45; }
@@ -136,7 +139,7 @@ figcaption { font-size: 15px; color: var(--ink-dim); margin-top: 9px; line-heigh
 .hero p { margin: 0; font-size: 20px; color: var(--ink-muted); max-width: 600px; }
 .hero p a { color: var(--brass); }
 /* The looping clip (MP4, muted) sits here; its poster is what reduced motion shows. */
-.hero__clip { width: 260px; height: 260px; border-radius: 50%; object-fit: cover; display: block; }
+.hero__clip { mix-blend-mode: lighten; width: 260px; height: 260px; border-radius: 50%; object-fit: cover; display: block; }
 .pagehead { padding: 40px 0 8px; }
 .pagehead h1 { font: 700 40px/1.1 Alegreya, serif; color: var(--ink-strong); margin: 8px 0 0; }
 .pager { display: flex; gap: 6px; align-items: center; justify-content: center; padding: 8px 0 56px;
