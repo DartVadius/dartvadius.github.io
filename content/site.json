@@ -1,6 +1,7 @@
 {
   "_comment": "Everything specific to this site. build.py and templates/ hold no names, URLs or UI strings.",
   "site": "https://dartvadius.github.io",
+  "indexnow_key": "78b22bc7782d2774baf46950697cea79",
   "site_name": "dartvadius",
   "author": "dartvadius",
   "mastodon": "https://mastodon.social/@DartVadius",

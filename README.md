@@ -20,6 +20,17 @@ home page is the post list. The design source of truth is the mock in
 `design/screens/` (`home.html`, `post.html`); `static/site.css` was lifted from
 its `blog.css`.
 
+Files under `root/` are copied verbatim to the site root: the Search Console
+verification file and the IndexNow key. Do not delete them.
+
+## Telling search engines
+
+Google: Search Console reads `sitemap.xml` (submitted 2026-10-30). Bing was
+imported from Search Console the same day. After a push has gone live,
+`python3 notify.py` pings IndexNow with every sitemap URL (or
+`python3 notify.py /<slug>/ /uk/<slug>/ /ru/<slug>/` for just a new post);
+IndexNow engines share submissions, so one ping covers Bing and the others.
+
 ## Feeds
 
 `/feed.xml`, `/uk/feed.xml`, `/ru/feed.xml` — RSS 2.0, the newest 20 posts of
